@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/testsolis.dir/testsolis.cc.o -o testsolis  -Wl,-rpath,/home/javitrucas/MH-PractOpt/code/build libcec17_test_func.so

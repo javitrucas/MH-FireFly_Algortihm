@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/testrandom.dir/testrandom.cc.o -o testrandom  -Wl,-rpath,/home/javitrucas/MH-PractOpt/code/build libcec17_test_func.so

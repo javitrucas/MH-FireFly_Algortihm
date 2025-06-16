@@ -1,5 +1,4 @@
 #ifndef _CEC17
-
 #define _CEC17 1
 
 #if defined(WIN32) || defined(_WIN32) || defined (_WIN64)
@@ -7,6 +6,12 @@
 #else
 #define PATH_SEPARATOR '/'
 #endif
+
+// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
+#ifdef __cplusplus // Esto asegura que el bloque extern "C" solo se usa en compiladores C++
+extern "C" {
+#endif
+// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
 
 
 /**
@@ -36,5 +41,11 @@ double cec17_error(double fitness);
  * @return fitness.
  */
 double cec17_fitness(double *sol);
+
+// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
+#ifdef __cplusplus // Esto cierra el bloque extern "C"
+}
+#endif
+// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
 
 #endif
