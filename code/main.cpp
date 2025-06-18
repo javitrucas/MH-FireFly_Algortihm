@@ -1,46 +1,102 @@
-// ~/MH-PractOpt/main.cpp
+#include <iostream>
+#include <string>
+#include <filesystem>
+#include <regex>
+#include "firefly.h"
+#include <fstream>
 
-#include <iostream>  // Para std::cout, std::endl
-#include <string>    // Para std::string
-#include "firefly.h" // Incluir el encabezado de tu algoritmo Firefly
+namespace fs = std::filesystem;
 
-// El benchmark CEC2017 es manejado por firefly.cpp internamente a través de cec17.h,
-// y se enlaza con la librería cec17_lib.
+void crear_directorio_si_no_existe(const fs::path& dir) {
+    if (fs::exists(dir)) {
+        if (!fs::is_directory(dir)) {
+            std::cerr << "Error: " << dir << " existe pero no es un directorio.\n";
+            std::exit(EXIT_FAILURE);
+        }
+    } else {
+        fs::create_directories(dir);
+    }
+}
+
+std::string modo_a_string(FireflyMode modo) {
+    switch (modo) {
+        case FireflyMode::BASIC:        return "basic";
+        case FireflyMode::LOCAL_SEARCH: return "local_search";
+        case FireflyMode::ELITISTA:     return "elitista";
+    }
+    return "unknown";
+}
 
 int main() {
-    // Configura los parámetros del algoritmo Firefly
-    FireflyParams params;
-    params.num_fireflies = NUM_FIREFLIES_DEFAULT; // Usamos los valores por defecto de firefly.h
-    params.alpha         = ALPHA_DEFAULT;
-    params.beta0         = BETA0_DEFAULT;
-    params.gamma         = GAMMA_DEFAULT;
-    params.lower_bound   = LOWER_BOUND_DEFAULT;
-    params.upper_bound   = UPPER_BOUND_DEFAULT;
+    fs::path data_dir = "input_data";
+    std::vector<fs::path> files;
 
-    // Puedes variar estos para probar diferentes funciones y dimensiones
-    int dimension = 10;   // Por ejemplo: 2, 5, 10, 30, 50, 100
-    int function_id = 1;  // Por ejemplo: 1 a 30 (aunque F2 tiene inconsistencias)
+    for (const auto& entry : fs::directory_iterator(data_dir)) {
+        if (entry.is_regular_file()) {
+            files.push_back(entry.path());
+        }
+    }
 
-    // Calcula el número máximo de evaluaciones de función según el estándar CEC2017
-    params.max_fes = (long long)10000 * dimension;
+    std::sort(files.begin(), files.end(), [](const fs::path& a, const fs::path& b) {
+        return a.filename().string() < b.filename().string();
+    });
 
-    // Nombre del algoritmo para los archivos de salida del benchmark CEC2017
-    std::string algorithm_name = "MyFireflyAlgorithm";
+    const std::regex m_format(R"(M_(\d+)_D(\d+)\.txt)");
+    std::vector<FireflyMode> modos = {FireflyMode::BASIC, FireflyMode::LOCAL_SEARCH, FireflyMode::ELITISTA};
 
-    std::cout << "-----------------------------------------------------" << std::endl;
-    std::cout << "Iniciando experimento con Algoritmo Firefly" << std::endl;
-    std::cout << "Función: F" << function_id << ", Dimensión: " << dimension << std::endl;
-    std::cout << "Max FEs: " << params.max_fes << std::endl;
-    std::cout << "-----------------------------------------------------" << std::endl;
+    for (const auto& file_path : files) {
+        std::string filename = file_path.filename().string();
+        std::smatch match;
+        if (!std::regex_match(filename, match, m_format)) {
+            std::cout << "⚠️ No válido: " << filename << " → omitiendo\n";
+            continue;
+        }
 
-    // Ejecutar el algoritmo Firefly
-    double final_best_fitness = run_firefly_algorithm(dimension, function_id, params, algorithm_name);
+        int f = std::stoi(match[1]);
+        int dim = std::stoi(match[2]);
+        if (dim != 10 && dim != 30 && dim != 50) {
+            std::cout << "❌ Dimensión ignorada (" << dim << "): " << filename << "\n";
+            continue;
+        }
 
-    std::cout << "\n-----------------------------------------------------" << std::endl;
-    std::cout << "Experimento finalizado." << std::endl;
-    std::cout << "La mejor aptitud encontrada por " << algorithm_name << " para F" << function_id 
-              << " (D=" << dimension << ") es: " << std::scientific << final_best_fitness << std::endl;
-    std::cout << "-----------------------------------------------------" << std::endl;
+        for (auto modo : modos) {
+            // Configurar parámetros por modo
+            FireflyParams params;
+            params.num_fireflies = NUM_FIREFLIES_DEFAULT;
+            params.alpha         = ALPHA_DEFAULT;
+            params.beta0         = BETA0_DEFAULT;
+            params.gamma         = GAMMA_DEFAULT;
+            params.lower_bound   = -100.0;
+            params.upper_bound   = 100.0;
+            params.max_fes       = 10000LL * dim;
+            params.T             = 10;
+            params.mode          = modo;
+
+            std::string modo_str = modo_a_string(modo);
+            std::string alg_name = "MyFireflyD" + std::to_string(dim) + "_" + modo_str;
+            fs::path results_dir = "results_" + alg_name;
+            crear_directorio_si_no_existe(results_dir);
+
+            fs::path output_file = results_dir / ("F" + std::to_string(f) + "_" + modo_str + ".txt");
+            if (fs::exists(output_file)) {
+                std::cout << "✅ Ya existe: " << output_file << " → omitiendo\n";
+                continue;
+            }
+
+            std::cout << "=====================================================\n";
+            std::cout << "Función: F" << f << " | Dim=" << dim \
+                      << " | Modo=" << modo_str \
+                      << " | MaxFEs=" << params.max_fes << "\n";
+
+            double media = 0.0;
+            for (int run = 1; run <= 5; ++run) {
+                std::cout << "→ " << modo_str << " Ejecución " << run << "/5\n";
+                double resultado = run_firefly_algorithm(dim, f, params, alg_name);
+                media += resultado;
+            }
+            media /= 5.0;
+        }
+    }
 
     return 0;
 }

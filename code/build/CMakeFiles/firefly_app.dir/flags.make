@@ -4,7 +4,11 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/javitrucas/MH-PractOpt/code/. -I/home/javitrucas/MH-PractOpt/code/..
+CXX_INCLUDES = -I/home/javitrucas/MH-PractOpt/code -I/home/javitrucas/MH-PractOpt/code/..
 
-CXX_FLAGS = 
+CXX_FLAGS = -std=c++17 -Wall -Wextra -Wpedantic -march=native
+
+# PCH options: CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch_OPTIONS = -Winvalid-pch;-x;c++-header;-include;/home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx
+
+# PCH options: CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o_OPTIONS = -Winvalid-pch;-include;/home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx
 

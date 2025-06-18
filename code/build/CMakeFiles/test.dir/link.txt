@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/test.dir/test.cc.o -o test  -Wl,-rpath,/home/javitrucas/MH-PractOpt/code/build libcec17_test_func.so
+/usr/bin/c++ CMakeFiles/test.dir/test.cc.o -o test  -Wl,-rpath,/home/javitrucas/MH-PractOpt/code/build libcec17_test_func.so -lm

@@ -7,11 +7,9 @@
 #define PATH_SEPARATOR '/'
 #endif
 
-// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
 #ifdef __cplusplus // Esto asegura que el bloque extern "C" solo se usa en compiladores C++
 extern "C" {
 #endif
-// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
 
 
 /**
@@ -42,10 +40,8 @@ double cec17_error(double fitness);
  */
 double cec17_fitness(double *sol);
 
-// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
 #ifdef __cplusplus // Esto cierra el bloque extern "C"
 }
 #endif
-// <<<<<<<< AÑADE ESTAS LÍNEAS <<<<<<<<
 
 #endif

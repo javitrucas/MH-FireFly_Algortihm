@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -Dcec17_test_func_EXPORTS
 
-C_INCLUDES = -I/home/javitrucas/MH-PractOpt/code/. -I/home/javitrucas/MH-PractOpt/code/..
+C_INCLUDES = -I/home/javitrucas/MH-PractOpt/code -I/home/javitrucas/MH-PractOpt/code/..
 
-C_FLAGS = -fPIC
+C_FLAGS = -fPIC -Wall -Wextra -Wpedantic -march=native
 

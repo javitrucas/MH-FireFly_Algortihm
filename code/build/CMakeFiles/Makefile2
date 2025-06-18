@@ -63,19 +63,19 @@ CMAKE_BINARY_DIR = /home/javitrucas/MH-PractOpt/code/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/cec17_test_func.dir/all
 all: CMakeFiles/test.dir/all
 all: CMakeFiles/testrandom.dir/all
 all: CMakeFiles/testsolis.dir/all
 all: CMakeFiles/firefly_app.dir/all
-all: CMakeFiles/cec17_test_func.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
+codegen: CMakeFiles/cec17_test_func.dir/codegen
 codegen: CMakeFiles/test.dir/codegen
 codegen: CMakeFiles/testrandom.dir/codegen
 codegen: CMakeFiles/testsolis.dir/codegen
 codegen: CMakeFiles/firefly_app.dir/codegen
-codegen: CMakeFiles/cec17_test_func.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -83,12 +83,44 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/cec17_test_func.dir/clean
 clean: CMakeFiles/test.dir/clean
 clean: CMakeFiles/testrandom.dir/clean
 clean: CMakeFiles/testsolis.dir/clean
 clean: CMakeFiles/firefly_app.dir/clean
-clean: CMakeFiles/cec17_test_func.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/cec17_test_func.dir
+
+# All Build rule for target.
+CMakeFiles/cec17_test_func.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=1,2,3 "Built target cec17_test_func"
+.PHONY : CMakeFiles/cec17_test_func.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/cec17_test_func.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/javitrucas/MH-PractOpt/code/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cec17_test_func.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/javitrucas/MH-PractOpt/code/build/CMakeFiles 0
+.PHONY : CMakeFiles/cec17_test_func.dir/rule
+
+# Convenience name for target.
+cec17_test_func: CMakeFiles/cec17_test_func.dir/rule
+.PHONY : cec17_test_func
+
+# codegen rule for target.
+CMakeFiles/cec17_test_func.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target cec17_test_func"
+.PHONY : CMakeFiles/cec17_test_func.dir/codegen
+
+# clean rule for target.
+CMakeFiles/cec17_test_func.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/clean
+.PHONY : CMakeFiles/cec17_test_func.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/test.dir
@@ -217,38 +249,6 @@ CMakeFiles/firefly_app.dir/codegen:
 CMakeFiles/firefly_app.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/firefly_app.dir/build.make CMakeFiles/firefly_app.dir/clean
 .PHONY : CMakeFiles/firefly_app.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/cec17_test_func.dir
-
-# All Build rule for target.
-CMakeFiles/cec17_test_func.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=1,2,3 "Built target cec17_test_func"
-.PHONY : CMakeFiles/cec17_test_func.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/cec17_test_func.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/javitrucas/MH-PractOpt/code/build/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cec17_test_func.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/javitrucas/MH-PractOpt/code/build/CMakeFiles 0
-.PHONY : CMakeFiles/cec17_test_func.dir/rule
-
-# Convenience name for target.
-cec17_test_func: CMakeFiles/cec17_test_func.dir/rule
-.PHONY : cec17_test_func
-
-# codegen rule for target.
-CMakeFiles/cec17_test_func.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=1,2,3 "Finished codegen for target cec17_test_func"
-.PHONY : CMakeFiles/cec17_test_func.dir/codegen
-
-# clean rule for target.
-CMakeFiles/cec17_test_func.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cec17_test_func.dir/build.make CMakeFiles/cec17_test_func.dir/clean
-.PHONY : CMakeFiles/cec17_test_func.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

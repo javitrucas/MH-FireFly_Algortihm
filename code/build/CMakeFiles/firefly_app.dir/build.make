@@ -72,44 +72,46 @@ include CMakeFiles/firefly_app.dir/flags.make
 CMakeFiles/firefly_app.dir/codegen:
 .PHONY : CMakeFiles/firefly_app.dir/codegen
 
-CMakeFiles/firefly_app.dir/main.cpp.o: CMakeFiles/firefly_app.dir/flags.make
-CMakeFiles/firefly_app.dir/main.cpp.o: /home/javitrucas/MH-PractOpt/code/main.cpp
-CMakeFiles/firefly_app.dir/main.cpp.o: CMakeFiles/firefly_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/firefly_app.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/firefly_app.dir/main.cpp.o -MF CMakeFiles/firefly_app.dir/main.cpp.o.d -o CMakeFiles/firefly_app.dir/main.cpp.o -c /home/javitrucas/MH-PractOpt/code/main.cpp
+CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch: CMakeFiles/firefly_app.dir/flags.make
+CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch: CMakeFiles/firefly_app.dir/cmake_pch.hxx.cxx
+CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch: CMakeFiles/firefly_app.dir/cmake_pch.hxx
+CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch: CMakeFiles/firefly_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -x c++-header -include /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx -MD -MT CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch -MF CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch.d -o CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch -c /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx.cxx
 
-CMakeFiles/firefly_app.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/firefly_app.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/javitrucas/MH-PractOpt/code/main.cpp > CMakeFiles/firefly_app.dir/main.cpp.i
+CMakeFiles/firefly_app.dir/cmake_pch.hxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/firefly_app.dir/cmake_pch.hxx.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -x c++-header -include /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx -E /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx.cxx > CMakeFiles/firefly_app.dir/cmake_pch.hxx.i
 
-CMakeFiles/firefly_app.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/firefly_app.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/javitrucas/MH-PractOpt/code/main.cpp -o CMakeFiles/firefly_app.dir/main.cpp.s
+CMakeFiles/firefly_app.dir/cmake_pch.hxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/firefly_app.dir/cmake_pch.hxx.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -x c++-header -include /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx -S /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx.cxx -o CMakeFiles/firefly_app.dir/cmake_pch.hxx.s
 
-CMakeFiles/firefly_app.dir/firefly.cpp.o: CMakeFiles/firefly_app.dir/flags.make
-CMakeFiles/firefly_app.dir/firefly.cpp.o: /home/javitrucas/MH-PractOpt/code/firefly.cpp
-CMakeFiles/firefly_app.dir/firefly.cpp.o: CMakeFiles/firefly_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/firefly_app.dir/firefly.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/firefly_app.dir/firefly.cpp.o -MF CMakeFiles/firefly_app.dir/firefly.cpp.o.d -o CMakeFiles/firefly_app.dir/firefly.cpp.o -c /home/javitrucas/MH-PractOpt/code/firefly.cpp
+CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o: CMakeFiles/firefly_app.dir/flags.make
+CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o: CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx
+CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o: CMakeFiles/firefly_app.dir/cmake_pch.hxx
+CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o: CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch
+CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o: CMakeFiles/firefly_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/javitrucas/MH-PractOpt/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx -MD -MT CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o -MF CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o.d -o CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o -c /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx
 
-CMakeFiles/firefly_app.dir/firefly.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/firefly_app.dir/firefly.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/javitrucas/MH-PractOpt/code/firefly.cpp > CMakeFiles/firefly_app.dir/firefly.cpp.i
+CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx -E /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx > CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.i
 
-CMakeFiles/firefly_app.dir/firefly.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/firefly_app.dir/firefly.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/javitrucas/MH-PractOpt/code/firefly.cpp -o CMakeFiles/firefly_app.dir/firefly.cpp.s
+CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/cmake_pch.hxx -S /home/javitrucas/MH-PractOpt/code/build/CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx -o CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.s
 
 # Object files for target firefly_app
 firefly_app_OBJECTS = \
-"CMakeFiles/firefly_app.dir/main.cpp.o" \
-"CMakeFiles/firefly_app.dir/firefly.cpp.o"
+"CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o"
 
 # External object files for target firefly_app
 firefly_app_EXTERNAL_OBJECTS =
 
-firefly_app: CMakeFiles/firefly_app.dir/main.cpp.o
-firefly_app: CMakeFiles/firefly_app.dir/firefly.cpp.o
+firefly_app: CMakeFiles/firefly_app.dir/cmake_pch.hxx.gch
+firefly_app: CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o
 firefly_app: CMakeFiles/firefly_app.dir/build.make
 firefly_app: libcec17_test_func.so
 firefly_app: CMakeFiles/firefly_app.dir/link.txt

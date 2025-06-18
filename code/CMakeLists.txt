@@ -1,45 +1,81 @@
-cmake_minimum_required(VERSION 3.5)
-PROJECT(cec17)
+cmake_minimum_required(VERSION 3.16)
+project(MH_PractOpt C CXX)
 
-# KEY CHANGE 1: Incluir directorios para encontrar firefly.h y cec17.h
-# . hace referencia a ~/MH-PractOpt/code/ (para cec17.h, etc.)
-# .. hace referencia a ~/MH-PractOpt/ (para firefly.h)
-include_directories(. ..)
+# ----------------------------------------
+# Optimizaciones de compilación
+# ----------------------------------------
+find_program(CCACHE_PROGRAM ccache)
+if(CCACHE_PROGRAM)
+    message(STATUS "Usando ccache: ${CCACHE_PROGRAM}")
+    set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+    set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_PROGRAM})
+endif()
 
-ADD_EXECUTABLE(test "test.cc")
-ADD_EXECUTABLE(testrandom "testrandom.cc")
-ADD_EXECUTABLE(testsolis "testsolis.cc")
+include(ProcessorCount)
+ProcessorCount(N)
+if(NOT N EQUAL 0)
+    set(CMAKE_BUILD_PARALLEL_LEVEL ${N})
+endif()
 
-# KEY CHANGE 2: Define tu ejecutable. He cambiado el nombre a 'firefly_app'
-# para evitar confusión con el archivo main.cpp.
-# Aquí se le dice a CMake que 'firefly_app' necesita COMPILAR AMBOS:
-# ../main.cpp (main.cpp en el directorio padre)
-# ../firefly.cpp (firefly.cpp en el directorio padre)
-ADD_EXECUTABLE(firefly_app ../main.cpp ../firefly.cpp)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-ADD_LIBRARY("cec17_test_func" SHARED "cec17_test_func.c" "cec17.c")
+if(MSVC)
+    add_compile_options(/W4 /MD)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic -march=native)
+endif()
 
-TARGET_LINK_LIBRARIES(test "cec17_test_func")
-TARGET_LINK_LIBRARIES(testrandom "cec17_test_func")
-TARGET_LINK_LIBRARIES(testsolis "cec17_test_func")
+# ----------------------------------------
+# Incluir directorios
+# ----------------------------------------
+# ${CMAKE_SOURCE_DIR} apunta a ~/MH-PractOpt/code
+include_directories(
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/..
+)
 
-# KEY CHANGE 3: Enlaza tu nuevo ejecutable 'firefly_app' con las librerías necesarias.
-# Necesita la librería CEC2017 que acabas de construir ('cec17_test_func') y
-# la librería matemática 'm' (para funciones como std::sqrt, std::exp, etc.).
-TARGET_LINK_LIBRARIES(firefly_app cec17_test_func m)
+# ----------------------------------------
+# Ejecutables de test con CEC2017
+# ----------------------------------------
+add_library(cec17_test_func SHARED
+    ${CMAKE_SOURCE_DIR}/cec17_test_func.c
+    ${CMAKE_SOURCE_DIR}/cec17.c
+)
+add_executable(test ${CMAKE_SOURCE_DIR}/test.cc)
+add_executable(testrandom ${CMAKE_SOURCE_DIR}/testrandom.cc)
+add_executable(testsolis ${CMAKE_SOURCE_DIR}/testsolis.cc)
 
-# Define la ruta de origen de los datos de entrada
-# CMAKE_SOURCE_DIR para este CMakeLists.txt es ~/MH-PractOpt/code
-# Así que para llegar a ~/MH-PractOpt/input_data, necesitamos ir un nivel arriba (../)
-set(INPUT_DATA_SOURCE_DIR "${CMAKE_SOURCE_DIR}/input_data") 
+target_link_libraries(test PRIVATE cec17_test_func m)
+target_link_libraries(testrandom PRIVATE cec17_test_func m)
+target_link_libraries(testsolis PRIVATE cec17_test_func m)
 
-# Define la ruta de destino dentro de la carpeta de construcción
-# CMAKE_BINARY_DIR para este CMakeLists.txt es ~/MH-PractOpt/code/build
+# ----------------------------------------
+# Aplicación Firefly
+# ----------------------------------------
+add_executable(firefly_app
+    ${CMAKE_SOURCE_DIR}/main.cpp
+    ${CMAKE_SOURCE_DIR}/firefly.cpp
+)
+if(CMAKE_VERSION VERSION_GREATER_EQUAL "3.16")
+    set_target_properties(firefly_app PROPERTIES UNITY_BUILD ON)
+endif()
+
+target_link_libraries(firefly_app PRIVATE cec17_test_func m)
+
+target_precompile_headers(firefly_app PRIVATE
+    "<firefly.h>"
+)
+
+# ----------------------------------------
+# Copiado de datos de entrada
+# ----------------------------------------
+set(INPUT_DATA_SOURCE_DIR "${CMAKE_SOURCE_DIR}/input_data")
 set(INPUT_DATA_DEST_DIR "${CMAKE_BINARY_DIR}/input_data")
-
-# Añade un comando personalizado para copiar la carpeta después de que se construya tu aplicación
 add_custom_command(TARGET firefly_app POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     "${INPUT_DATA_SOURCE_DIR}"
     "${INPUT_DATA_DEST_DIR}"
-    COMMENT "Copiando carpeta input_data al directorio de construcción")
+    COMMENT "Copiando carpeta input_data al directorio de construcción"
+)

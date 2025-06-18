@@ -95,6 +95,7 @@ CMakeFiles/testsolis.dir/testsolis.cc.o: /home/javitrucas/MH-PractOpt/code/tests
   /usr/include/c++/11/pstl/pstl_config.h \
   /usr/include/c++/11/random \
   /usr/include/c++/11/stdexcept \
+  /usr/include/c++/11/stdlib.h \
   /usr/include/c++/11/streambuf \
   /usr/include/c++/11/string \
   /usr/include/c++/11/string_view \
@@ -219,12 +220,28 @@ CMakeFiles/testsolis.dir/testsolis.cc.o: /home/javitrucas/MH-PractOpt/code/tests
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h
 
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -289,6 +306,8 @@ CMakeFiles/testsolis.dir/testsolis.cc.o: /home/javitrucas/MH-PractOpt/code/tests
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/c++/11/ext/numeric_traits.h:
 
@@ -381,6 +400,8 @@ CMakeFiles/testsolis.dir/testsolis.cc.o: /home/javitrucas/MH-PractOpt/code/tests
 /usr/include/c++/11/iosfwd:
 
 /usr/include/c++/11/ios:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h:
 
 /usr/include/c++/11/tr1/bessel_function.tcc:
 
@@ -538,6 +559,8 @@ CMakeFiles/testsolis.dir/testsolis.cc.o: /home/javitrucas/MH-PractOpt/code/tests
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
+/usr/include/c++/11/stdlib.h:
+
 /usr/include/c++/11/streambuf:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
@@ -629,8 +652,6 @@ CMakeFiles/testsolis.dir/testsolis.cc.o: /home/javitrucas/MH-PractOpt/code/tests
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-
-/usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 

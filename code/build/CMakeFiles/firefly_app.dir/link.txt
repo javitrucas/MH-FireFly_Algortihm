@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/firefly_app.dir/main.cpp.o CMakeFiles/firefly_app.dir/firefly.cpp.o -o firefly_app  -Wl,-rpath,/home/javitrucas/MH-PractOpt/code/build libcec17_test_func.so -lm
+/usr/bin/c++ CMakeFiles/firefly_app.dir/Unity/unity_0_cxx.cxx.o -o firefly_app  -Wl,-rpath,/home/javitrucas/MH-PractOpt/code/build libcec17_test_func.so -lm
