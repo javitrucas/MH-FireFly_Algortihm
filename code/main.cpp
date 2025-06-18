@@ -2,8 +2,10 @@
 #include <string>
 #include <filesystem>
 #include <regex>
-#include "firefly.h"
+#include <vector>
 #include <fstream>
+#include <iomanip>
+#include "firefly.h"
 
 namespace fs = std::filesystem;
 
@@ -31,22 +33,29 @@ int main() {
     fs::path data_dir = "input_data";
     std::vector<fs::path> files;
 
+    // Obtener archivos del directorio
     for (const auto& entry : fs::directory_iterator(data_dir)) {
         if (entry.is_regular_file()) {
             files.push_back(entry.path());
         }
     }
 
-    std::sort(files.begin(), files.end(), [](const fs::path& a, const fs::path& b) {
+    // Ordenar alfabéticamente
+    std::sort(files.begin(), files.end(), [](const auto& a, const auto& b) {
         return a.filename().string() < b.filename().string();
     });
 
     const std::regex m_format(R"(M_(\d+)_D(\d+)\.txt)");
-    std::vector<FireflyMode> modos = {FireflyMode::BASIC, FireflyMode::LOCAL_SEARCH, FireflyMode::ELITISTA};
+    std::vector<FireflyMode> modos = {
+        FireflyMode::BASIC,
+        FireflyMode::LOCAL_SEARCH,
+        FireflyMode::ELITISTA
+    };
 
     for (const auto& file_path : files) {
         std::string filename = file_path.filename().string();
         std::smatch match;
+
         if (!std::regex_match(filename, match, m_format)) {
             std::cout << "⚠️ No válido: " << filename << " → omitiendo\n";
             continue;
@@ -54,13 +63,13 @@ int main() {
 
         int f = std::stoi(match[1]);
         int dim = std::stoi(match[2]);
+
         if (dim != 10 && dim != 30 && dim != 50) {
             std::cout << "❌ Dimensión ignorada (" << dim << "): " << filename << "\n";
             continue;
         }
 
-        for (auto modo : modos) {
-            // Configurar parámetros por modo
+        for (FireflyMode modo : modos) {
             FireflyParams params;
             params.num_fireflies = NUM_FIREFLIES_DEFAULT;
             params.alpha         = ALPHA_DEFAULT;
@@ -75,26 +84,24 @@ int main() {
             std::string modo_str = modo_a_string(modo);
             std::string alg_name = "MyFireflyD" + std::to_string(dim) + "_" + modo_str;
             fs::path results_dir = "results_" + alg_name;
+
             crear_directorio_si_no_existe(results_dir);
 
-            fs::path output_file = results_dir / ("F" + std::to_string(f) + "_" + modo_str + ".txt");
+            fs::path output_file = results_dir / ("results_" + std::to_string(f) + "_" + std::to_string(dim) + ".txt");
+
             if (fs::exists(output_file)) {
                 std::cout << "✅ Ya existe: " << output_file << " → omitiendo\n";
                 continue;
             }
 
             std::cout << "=====================================================\n";
-            std::cout << "Función: F" << f << " | Dim=" << dim \
-                      << " | Modo=" << modo_str \
+            std::cout << "Función: F" << f
+                      << " | Dim=" << dim
+                      << " | Modo=" << modo_str
                       << " | MaxFEs=" << params.max_fes << "\n";
 
-            double media = 0.0;
-            for (int run = 1; run <= 5; ++run) {
-                std::cout << "→ " << modo_str << " Ejecución " << run << "/5\n";
-                double resultado = run_firefly_algorithm(dim, f, params, alg_name);
-                media += resultado;
-            }
-            media /= 5.0;
+            // Esta función debe encargarse de escribir el archivo completo con múltiples milestones
+            run_firefly_algorithm(dim, f, params, alg_name);
         }
     }
 
